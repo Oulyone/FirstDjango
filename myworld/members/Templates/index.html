@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+    <h1>Find member</h1>
+    <form action="find/" method="post">
+    {% csrf_token %}
+    First Name: 
+    <input name="first">
+    <input type="submit" value="Submit">
+    {{ response }}
+    <p>{{ findmember.firstname }} {{findmember.lastname}}<p> 
+    </form>
+
+    <button>
+        <a href="add/">Add member</a>
+    </button>
+
+    <h1>Members</h1>
+    <table border="1">
+    {% for x in mymembers %}
+    <tr>
+    <td><a href="update/{{ x.id }}">{{ x.id }}</a></td>
+    <td>{{ x.id }}</td>
+    <td>{{ x.firstname }}</td>
+    <td>{{ x.lastname }}</td>
+    <td><a href="delete/{{ x.id }}">delete</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+
+    
+</body>
+</html>
